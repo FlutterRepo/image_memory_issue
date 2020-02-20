@@ -246,7 +246,13 @@ class _MyHomePageState extends State<MyHomePage>
           //创建3个Tab页
           return Container(
             alignment: Alignment.center,
-            child: new ListView(children: _getSlivers()),
+            child: ListView.builder(itemCount: testImageUrls.length, itemBuilder: (BuildContext context, int idx){
+              return Image.network(
+                testImageUrls[idx],
+                width: screenSize?.width ?? 750.0,
+                fit: BoxFit.fitWidth,
+              );
+            }),
           );
         }).toList(),
       ),
@@ -258,21 +264,6 @@ class _MyHomePageState extends State<MyHomePage>
       context,
       new MaterialPageRoute(builder: (context) => new SecondScreen()),
     );
-  }
-
-  List<Widget> _getSlivers() {
-    if (screenSize == null) {
-      screenSize = MediaQuery.of(context).size;
-    }
-    List<Widget> mainSlivers = List();
-    testImageUrls.forEach((imgUrl) {
-      mainSlivers.add(Image.network(
-        imgUrl,
-        width: screenSize?.width ?? 750.0,
-        fit: BoxFit.fitWidth,
-      ));
-    });
-    return mainSlivers;
   }
 }
 
