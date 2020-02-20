@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+  PaintingBinding.instance.imageCache.maximumSize = 0;
+  PaintingBinding.instance.imageCache.maximumSizeBytes = 0;
+}
 Size screenSize;
 
 class MyApp extends StatelessWidget {
