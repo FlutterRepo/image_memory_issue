@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
-  PaintingBinding.instance.imageCache.maximumSize = 0;
-  PaintingBinding.instance.imageCache.maximumSizeBytes = 0;
+  PaintingBinding.instance.imageCache.maximumSize = 10;
+  PaintingBinding.instance.imageCache.maximumSizeBytes = 50*1000*1000;
 }
 Size screenSize;
 
@@ -254,6 +254,7 @@ class _MyHomePageState extends State<MyHomePage>
               return Image.network(
                 testImageUrls[idx],
                 width: screenSize?.width ?? 750.0,
+                height: 500,
                 fit: BoxFit.fitWidth,
               );
             }),
